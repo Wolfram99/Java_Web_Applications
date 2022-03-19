@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="../../styles/styleBarChart.css">
+    <title>Started Page</title>
+    <div class="headStyle">Information statistics for the railroad</div>
+</head>
+<body>
+
+    <div class="parent">
+        <a id="container"  th:href="@{/work_safety/create}"  alt="" title="Add data to the 'Occupational Safety and Health' chart"></a>
+        <a id="truck" th:href="@{/truck/createTruck}"  alt="" title="Add data to the 'Cargo turnover' chart" ></a>
+        <!--
+            <div>
+                <hr/>
+                <button>
+                    <a th:href="@{/work_safety/create}">Create</a>
+                </button>
+                <hr/>
+            </div>
+            <div>
+                <hr/>
+                <button>
+                    <a th:href="@{/truck/createTruck}">Create</a>
+                </button>
+                <hr/>
+            </div>
+        -->
+        <a id="passengers" th:href="@{/passengers/createPassengers}" alt=" " title="Add data to the 'Passenger turnover' chart"></a>
+        <a id="wagons" th:href="@{/wagons/createWagons}" alt="" title="Add data to the 'Number of defective cars' chart"></a>
+        <!--
+        <div>
+            <hr/>
+            <button>
+                <a th:href="@{/passengers/createPassengers}">Create</a>
+            </button>
+            <hr/>
+        </div>
+        <div>
+            <hr/>
+            <button>
+                <a th:href="@{/wagons/createWagons}">Create</a>
+            </button>
+            <hr/>
+        </div>
+    </div>
+    -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+
+
+            <div class="grid">
+                <script th:inline="javascript">
+                    $(function(){
+                        Highcharts.chart('container', {
+                            chart: {
+                                type: 'column',
+                                options3d: {
+                                    enabled: true,
+                                    alpha: 0,
+                                    beta: 2,
+                                    depth: 20,},
+                            },
+                            title: {
+                                text: 'Work Safety'
+                            },
+                            xAxis: {
+                                categories: [[${surveyMap.keySet()}]],
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                max:20,
+                                title: {
+                                    text: 'quantity [Humans]'
+                                }
+                            },
+                            plotOptions: {
+                               column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'Total',
+                                color: 'rgb(86, 128,0 )',
+                                data: [[${surveyMap.values()}]]
+                            },
+                                {
+                                    name: 'Heavy',
+                                    color: 'rgb(86, 12,85)' ,
+                                    data: [[${surveyMap1.values()}]]
+                                },{
+                                    name: 'Deadly',
+                                    color: 'rgb(240, 0,97 )',
+                                    data: [[${surveyMap2.values()}]]
+                                }]
+                        });
+                    });
+                </script>
+            </div>
+            <div>
+                <script th:inline="javascript">
+                    $(function(){
+                        Highcharts.chart('truck', {
+                            chart: {
+                                type: 'column',
+                                options3d: {
+                                    enabled: true,
+                                    alpha: 0,
+                                    beta: 2,
+                                    depth: 20,}
+                            },
+                            title: {
+                                text: 'Cargo turnover'
+                            },
+                            xAxis: {
+                                categories: [[${trucking.keySet()}]],
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                max:20,
+                                title: {
+                                    text: 'shipping Weight [Tons]'
+                                }
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'Cargo weight',
+                                color: 'rgb(82,12,80)',
+                                data: [[${trucking.values()}]]
+                            }]
+                        });
+                    });
+                </script>
+            </div>
+            <div>
+                <script th:inline="javascript">
+                    $(function(){
+                        Highcharts.chart('passengers', {
+                            chart: {
+                                type: 'column',
+                                options3d: {
+                                    enabled: true,
+                                    alpha: 0,
+                                    beta: 2,
+                                    depth: 20,}
+                            },
+                            title: {
+                                text: 'Passengers turnover'
+                            },
+                            xAxis: {
+                                categories: [[${passengers.keySet()}]],
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                max:1000,
+                                title: {
+                                    text: 'Passengers [Humans]'
+                                }
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'Passengers turnover',
+                                color: 'rgb(100,100,180)',
+                                data: [[${passengers.values()}]]
+                            }]
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="grid">
+                <script th:inline="javascript">
+                    $(function(){
+                        Highcharts.chart('wagons', {
+                            chart: {
+                                type: 'column',
+                                options3d: {
+                                    enabled: true,
+                                    alpha: 0,
+                                    beta: 2,
+                                    depth: 20,}
+                            },
+                            title: {
+                                text: 'The number of defective wagons'
+                            },
+                            xAxis: {
+                                categories: [[${wagons.keySet()}]],
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                max:50,
+                                title: {
+                                    text: 'the number of defective cars [Units]'
+                                }
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'the number of defective cars',
+                                color: 'rgb(250, 250,50)',
+                                data: [[${wagons.values()}]]
+                            }]
+                        });
+                    });
+                </script>
+            </div>
+
+ </body>
+</html>

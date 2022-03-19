@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../styles/styleTheForm.css">
+</head>
+<body>
+<form th:method="POST" th:action="@{/work_safety}" th:object="${workSafety}" class="text-field">
+    <label for="total" class="text-field__label">Total casualties: </label>
+    <input type="text" th:field="*{total}" id="total" class="text-field__input"/>
+    <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{total}">Total Error</div>
+    <br/>
+    <label for="heavy" class="text-field__label">Severe cases: </label>
+    <input type="text" th:field="*{heavy}" id="heavy" class="text-field__input"/>
+    <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{heavy}">Heavy Error</div>
+    <br/>
+    <label for="deadly" class="text-field__label">Fatal accidents: </label>
+    <input type="text" th:field="*{deadly}" id="deadly" class="text-field__input"/>
+    <div style="color: maroon" th:if="${#fields.hasErrors()}" th:errors="*{deadly}">Deadly Error</div>
+    <br/>
+    <input type="submit" value="Create" class="button1"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All</title>
+</head>
+<body>
+    <div th:each="w: ${workSafety}">
+        <a th:href="@{/work_safety/{id}(id=${w.getId()})}" th:text="${w.getCurrentDate()}">TEXT</a>
+    </div>
+<br/>
+<hr/>
+    <button>
+    <a th:href="@{/work_safety/create}">Create</a>
+    </button>
+</body>
+</html>

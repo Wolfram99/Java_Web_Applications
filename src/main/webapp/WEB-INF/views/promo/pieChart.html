@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>PIE</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="../../styles/styleTheForm.css" type="text/css">
+
+</head>
+<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<div class="parent">
+    <div >start</div>
+    <div id="container" ></div>
+    <div id="container1" ></div>
+    <div id="container2" ></div>
+    <div id="container3" ></div>
+</div>
+
+        <script th:inline="javascript">
+            Highcharts.chart('container', {
+                chart : {
+                    type : 'pie',
+                    options3d : {
+                        enabled : true,
+                        alpha : 50,
+                        beta : 0
+                    }
+                },
+                title : {
+                    text : 'Result Status'
+                },
+                tooltip : {
+                    pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions : {
+                    pie : {
+                        allowPointSelect : true,
+                        cursor : 'pointer',
+                        depth : 35,
+                        dataLabels : {
+                            enabled : true,
+                            format : '{point.name}'
+                        }
+                    }
+                },
+                series : [ {
+                    type : 'pie',
+                    name : 'Ratio',
+                    data : [ [ 'Success', [[${pass}]] ], [ 'Failure', [[${fail}]] ]  ]
+                } ]
+            });
+        </script>
+        <script th:inline="javascript">
+            Highcharts.chart('container1', {
+                chart : {
+                    type : 'pie',
+                    options3d : {
+                        enabled : true,
+                        alpha : 50,
+                        beta : 0
+                    }
+                },
+                title : {
+                    text : 'Result Status'
+                },
+                tooltip : {
+                    pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions : {
+                    pie : {
+                        allowPointSelect : true,
+                        cursor : 'pointer',
+                        depth : 35,
+                        dataLabels : {
+                            enabled : true,
+                            format : '{point.name}'
+                        }
+                    }
+                },
+                series : [ {
+                    type : 'pie',
+                    name : 'Ratio',
+                    data : [ [ 'Success', [[${pass}]] ], [ 'Failure', [[${fail}]] ]  ]
+                } ]
+            });
+        </script>
+        <script th:inline="javascript">
+            Highcharts.chart('container2', {
+                chart : {
+                    type : 'pie',
+                    options3d : {
+                        enabled : true,
+                        alpha : 50,
+                        beta : 0
+                    }
+                },
+                title : {
+                    text : 'Result Status'
+                },
+                tooltip : {
+                    pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions : {
+                    pie : {
+                        allowPointSelect : true,
+                        cursor : 'pointer',
+                        depth : 35,
+                        dataLabels : {
+                            enabled : true,
+                            format : '{point.name}'
+                        }
+                    }
+                },
+                series : [ {
+                    type : 'pie',
+                    name : 'Ratio',
+                    data : [ [ 'Success', [[${pass}]] ], [ 'Failure', [[${fail}]] ]  ]
+                } ]
+            });
+        </script>
+        <script th:inline="javascript">
+            Highcharts.chart('container3', {
+                chart : {
+                    type : 'pie',
+                    options3d : {
+                        enabled : true,
+                        alpha : 50,
+                        beta : 0
+                    }
+                },
+                title : {
+                    text : 'Result Status'
+                },
+                tooltip : {
+                    pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions : {
+                    pie : {
+                        allowPointSelect : true,
+                        cursor : 'pointer',
+                        depth : 35,
+                        dataLabels : {
+                            enabled : true,
+                            format : '{point.name}'
+                        }
+                    }
+                },
+                series : [ {
+                    type : 'pie',
+                    name : 'Ratio',
+                    data : [ [ 'Success', [[${pass}]] ], [ 'Failure', [[${fail}]] ]  ]
+                } ]
+            });
+        </script>
+
+</body>
+</html>

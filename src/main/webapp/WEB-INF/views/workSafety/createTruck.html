@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create information about the truck</title>
+    <link rel="stylesheet" href="../../styles/styleTheForm.css">
+</head>
+<body>
+<form th:method="POST" th:action="@{/truck}" th:object="${truck}" class="text-field">
+    <label for="cargoWeight" class="text-field__label">Cargo Weight: </label>
+    <input type="text" th:field="*{cargoWeight}" id="cargoWeight" class="text-field__input"/>
+    <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{cargoWeight}">cargoWeight Error</div>
+    <br/>
+    <input class="button1" type="submit" value="Create"/>
+</form>
+</body>
+</html>

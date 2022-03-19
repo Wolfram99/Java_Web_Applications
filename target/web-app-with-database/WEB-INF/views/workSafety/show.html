@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Work Safety</title>
+</head>
+<body>
+    <p th:text="'ID: '+${workSafety.getId()}">TEXT</p>
+    <p th:text="'Current Date: '+${workSafety.getCurrentDate()}">TEXT</p>
+    <p th:text="'Total casualties: '+${workSafety.getTotal()}">TEXT</p>
+    <p th:text="'Severe cases: '+${workSafety.getHeavy()}">TEXT</p>
+    <p th:text="'Fatal accidents: '+${workSafety.getDeadly()}">TEXT</p>
+<br/>
+<hr/>
+<BUTTON>
+    <a th:href="@{/work_safety/{id}/update (id=${workSafety.getId()})}">Update</a>
+</BUTTON>
+<form th:method="DELETE" th:action="@{/work_safety/{id}(id=${workSafety.getId()})}">
+    <input type="submit" VALUE="Delete"/>
+</form>
+</body>
+</html>

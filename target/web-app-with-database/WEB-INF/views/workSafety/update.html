@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update the form Work Safety</title>
+</head>
+<body>
+    <form th:method="PATCH" th:action="@{/work_safety/{id} (id=${workSafety.getId()})}" th:object="${workSafety}">
+        <label for="total">Total casualties: </label>
+        <input type="text" th:field="*{total}" id="total"/>
+        <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{total}">Total Error</div>
+        <br/>
+    <label for="heavy">Severe cases: </label>
+        <input type="text" th:field="*{heavy}" id="heavy"/>
+        <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{heavy}">Heavy Error</div>
+        <br/>
+    <label for="deadly">Fatal accidents: </label>
+        <input type="text" th:field="*{deadly}" id="deadly"/>
+        <div style="color: red" th:if="${#fields.hasErrors()}" th:errors="*{deadly}">Deadly Error</div>
+        <br/>
+        <hr/>
+        <input type="submit" value="Update"/>
+    </form>
+
+</body>
+</html>

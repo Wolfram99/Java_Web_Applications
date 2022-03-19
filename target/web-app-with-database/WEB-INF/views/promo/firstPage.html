@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Promo First Page</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="../../styles/styleBarChart.css" type="text/css" />
+    <script src="../../scripts/firstScript.js"></script>
+   </head>
+<body>
+    <script th:object="">
+        google.load('visualization','1.0', {'packages':['corechart']});
+
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var jsonData = $.ajax({
+                url: "getData.php",
+                async: false
+            }).responseText;
+
+            // Create the data table.
+
+            var data = new google.visualization.DataTable(jsonData);
+
+            // Set chart options
+            var options = {'title':'Work Safety',
+                'width':600,
+                'height':300,
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_promo'));
+            chart.draw(data, options);
+        }
+    </script>
+    <h1> Promo Page </h1>
+           <p>
+            five in the game
+            <span class="Big-red"> aasdsadhl jkahdhash ahjksdhah kvad asdu runduk, ha-ha sunduk dlya run </span>
+            fucking slave
+        </p>
+    <hr/>
+    <div id="chart_div"></div>
+    <hr/>
+    <div id="columnchart_material" ></div>
+    <hr/>
+    <div id="chart_promo" ></div>
+    <hr/>
+        <button id="button1" onclick="sayHello()">Button</button>
+    <hr/>
+
+
+</body>
+</html>
